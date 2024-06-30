@@ -1,6 +1,6 @@
 
 
-codvar Python library provides a set of functions for validating, formatting, generating, and suggesting usernames. The library aims to assist in managing and handling usernames effectively in your applications.
+Codvar is Python library provides a set of functions for validating, formatting, generating, and suggesting usernames. The library aims to assist in managing and handling usernames effectively in your applications.
   1. Username
 ## Functions:
 
