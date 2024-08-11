@@ -40,9 +40,9 @@ write(selector, value)
 ### Examples
 1. **Set Input Value**
     ```javascript
-    write('#username', 'JohnDoe');
+    write('#username', 'codvar');
     ```
-    Sets the value of the `<input>` element with ID `username` to `JohnDoe`.
+    Sets the value of the `<input>` element with ID `username` to `codvar`.
 
 2. **Set Text Content**
     ```javascript
