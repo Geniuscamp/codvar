@@ -1,4 +1,10 @@
+Quick Start just download codvar.js and connect with you Html 
 
+on your html file in the head tag 
+```javascript
+<script src="codvar.js"></script>
+```
+and read this to use 
 
 
 Our  framework provides utility functions for selecting DOM elements and hiding them with animations. It includes options for fade-out and ease-out animations.
@@ -129,8 +135,103 @@ const milliseconds = parseDuration('500ms'); // Returns 500
 const millisecondsFromSeconds = parseDuration('0.5s'); // Returns 500
 const millisecondsFromNumber = parseDuration(300); // Returns 300
 ```
-4. 
-## 4. `slideshow()`
+
+
+
+# `addStyleSheet` Function Documentation
+
+## Overview
+
+The `addStyleSheet` function is a utility that allows developers to dynamically apply CSS styles to elements on a webpage based on CSS selectors. It supports both direct styling and media queries, making it easy to implement responsive design.
+
+## Function Signature
+
+```javascript
+function addStyleSheet(styleConfig) { /* ... */ }
+```
+
+## Parameters
+
+### `styleConfig`
+- **Type**: `Object`
+- **Description**: An object where each key is a CSS selector, and each value is either an object containing style properties and values or an object containing media queries.
+  
+  **Key Types**:
+  - **Selector**: A CSS selector string (e.g., `'.className'`, `'#elementId'`, `'tagName'`).
+  
+  **Value Types**:
+  - **Styles Object**: An object where the keys are CSS properties and the values are the corresponding CSS values (e.g., `color: 'blue'`).
+  - **Media Queries**: An object where the `media` key contains an object of media queries and their associated styles.
+
+### Example Structure
+```javascript
+const styleConfig = {
+    '.selector': {
+        property: 'value',
+        media: {
+            '(max-width: 600px)': {
+                property: 'value',
+            },
+        },
+    },
+    '#anotherSelector': {
+        property: 'value',
+    },
+};
+```
+
+## How It Works
+
+1. **Iterate Over Selectors**: The function iterates through each key in the `styleConfig` object.
+2. **Check for Media Queries**: If a `media` property is found within the style object, the function calls a helper function to apply the media queries. If no `media` property is found, the function directly applies the styles to the elements selected by the given selector.
+3. **Apply Styles**: The function applies the styles directly to each selected element or generates a `<style>` block in the document’s `<head>` for media queries.
+
+## Usage
+
+### Basic Usage
+
+```javascript
+addStyleSheet({
+    '#header': {
+        backgroundColor: 'blue',
+        color: 'white',
+        padding: '10px',
+    },
+});
+```
+
+
+### Hover Effect Example
+
+```javascript
+addStyleSheet({
+    '.button': {
+        padding: '10px 20px',
+        backgroundColor: 'blue',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        borderRadius: '5px',
+    },
+    '.button:hover': {
+        backgroundColor: 'darkblue',
+    },
+});
+```
+
+## Benefits
+
+- **Dynamic Styling**: Easily apply styles to elements without requiring external CSS files.
+- **Responsive Design**: Handle responsive styling with integrated media queries.
+- **Ease of Use**: Apply multiple styles and media queries in a single function call.
+
+
+## Conclusion
+
+The `addStyleSheet` function is a powerful tool for applying dynamic styles in JavaScript. Its support for both direct styles and media queries makes it an excellent choice for building responsive and interactive web pages without relying on external CSS files.
+```
+
+## 5. `slideshow()`
 
 ### Purpose
 The `slideshow()` function creates a slideshow with various transition effects and controls.
