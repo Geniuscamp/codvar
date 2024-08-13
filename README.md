@@ -201,7 +201,6 @@ addStyleSheet({
 ```
 
 
-### Hover Effect Example
 
 ```javascript
 addStyleSheet({
@@ -213,9 +212,7 @@ addStyleSheet({
         cursor: 'pointer',
         borderRadius: '5px',
     },
-    '.button:hover': {
-        backgroundColor: 'darkblue',
-    },
+    
 });
 ```
 
@@ -226,9 +223,6 @@ addStyleSheet({
 - **Ease of Use**: Apply multiple styles and media queries in a single function call.
 
 
-## Conclusion
-
-The `addStyleSheet` function is a powerful tool for applying dynamic styles in JavaScript. Its support for both direct styles and media queries makes it an excellent choice for building responsive and interactive web pages without relying on external CSS files.
 ```
 
 ## 5. `slideshow()`
