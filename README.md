@@ -138,7 +138,7 @@ const millisecondsFromNumber = parseDuration(300); // Returns 300
 
 
 
-# `addStyleSheet` Function Documentation
+## `addStyleSheet` Function 
 
 ## Overview
 
