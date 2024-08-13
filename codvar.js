@@ -1,14 +1,79 @@
-
 function select(selector) {
     if (selector.startsWith('#')) {
         return document.getElementById(selector.slice(1));
     } else if (selector.startsWith('.')) {
-        return document.querySelector(selector);
+        return document.querySelectorAll(selector); 
     } else {
         return document.querySelector(selector);
     }
 }
 
+
+/**
+ * Applies styles to elements selected by the given selector, including media queries.
+ * @param {Object} styleConfig - An object where keys are selectors and values are style objects or media queries.
+ */
+function addStyleSheet(styleConfig) {
+    for (const [selector, styles] of Object.entries(styleConfig)) {
+        if (typeof styles === 'object') {
+            // Check if there's a media query
+            if (styles.media) {
+                applyMediaQuery(selector, styles);
+            } else {
+                // Apply styles directly
+                applyStyles(selector, styles);
+            }
+        }
+    }
+}
+
+/**
+ * Applies styles to elements based on a selector.
+ * @param {string} selector - The CSS selector.
+ * @param {Object} styles - An object containing style properties and values.
+ */function applyStyles(selector, styles) {
+    const elements = select(selector);
+    
+    if (elements instanceof NodeList || Array.isArray(elements)) {
+        elements.forEach(element => {
+            for (const [property, value] of Object.entries(styles)) {
+                element.style[property] = value;
+            }
+        });
+    } else if (elements) {
+        for (const [property, value] of Object.entries(styles)) {
+            elements.style[property] = value;
+        }
+    }
+}
+
+
+/**
+ * Applies styles including media queries.
+ * @param {string} selector - The CSS selector.
+ * @param {Object} styles - An object containing styles and media queries.
+ */
+function applyMediaQuery(selector, styles) {
+    const styleSheet = document.createElement('style');
+    document.head.appendChild(styleSheet);
+
+    let css = '';
+    for (const [mediaQuery, mediaStyles] of Object.entries(styles.media)) {
+        css += `@media ${mediaQuery} { ${selector} { `;
+        for (const [property, value] of Object.entries(mediaStyles)) {
+            css += `${property}: ${value}; `;
+        }
+        css += '} } ';
+    }
+
+    styleSheet.textContent = css;
+}
+
+/**
+ * Selects elements based on a selector string.
+ * @param {string} selector - The selector string.
+ * @returns {HTMLElement|NodeList} - The selected element(s).
+ */
 function hide(selector, animation, duration) {
     const element = select(selector);
     if (!element) return;
@@ -24,6 +89,14 @@ function hide(selector, animation, duration) {
             element.style.display = 'none';
             break;
     }
+}
+
+function show(selector) {
+    const element = select(selector);
+    if (!element) return;
+     element.style.display = 'block';  
+           
+    
 }
 
 function fadeOut(element, duration) {
@@ -124,7 +197,9 @@ function checkType(value) {
     } else {
         return 'unknown';
     }
-}function write(selector, value) {
+}
+
+function write(selector, value) {
     let elements;
 
     if (selector.startsWith('#')) {
@@ -203,15 +278,14 @@ function slideshow(selector, slideshowType = 'fade', speed = '2s', options = {})
     // Initialize styles for all elements
     function initializeStyles() {
         elements.forEach((el, i) => {
-            el.style.position = 'absolute';
+            
             el.style.top = '0';
             el.style.left = '0';
-            el.style.width = '100%';
-            el.style.height = '100%';
+          
             el.style.transition = `all ${settings.transitionDuration} ${settings.easing}`;
             el.style.opacity = '0';
             el.style.transform = 'none';
-            el.style.visibility = 'hidden';
+          
         });
     }
 
