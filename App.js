@@ -3,7 +3,7 @@ import {getAvailableMemory, getOperatingSystem,getBrowserName} from './codvar-mo
 
 const mainApp = comp `
      <div id='container'>
-     <img class='logo' src="../direction_arrow_logo_design.png" alt="" srcset="">   
+     <img class='logo' src="images/direction_arrow_logo_design.png" alt="" srcset="">   
      <h1>Welcome to <span class='codvar'>Codvar.js</span></h1>
      <p>User System Info</p>     
      <button id='show'>Show</button>
